@@ -1,7 +1,7 @@
 package dojo.supermarket.model;
 
 public class Discount {
-
+    // TODO 5. Its better to use the offer for generating the description. (Replace temp with query)
     private final String description;
     private final double discountAmount;
     private final Product product;

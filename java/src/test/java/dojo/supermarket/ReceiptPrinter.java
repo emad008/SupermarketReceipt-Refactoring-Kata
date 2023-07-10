@@ -4,6 +4,7 @@ import dojo.supermarket.model.*;
 
 import java.util.Locale;
 
+// TODO 3. Unusual class
 public class ReceiptPrinter {
 
     private final int columns;
@@ -16,12 +17,15 @@ public class ReceiptPrinter {
         this.columns = columns;
     }
 
+    // TODO 6. Unused method
     public String printReceipt(Receipt receipt) {
         StringBuilder result = new StringBuilder();
+        // TODO 4. Extract method
         for (ReceiptItem item : receipt.getItems()) {
             String receiptItem = presentReceiptItem(item);
             result.append(receiptItem);
         }
+        // TODO 4. Extract method
         for (Discount discount : receipt.getDiscounts()) {
             String discountPresentation = presentDiscount(discount);
             result.append(discountPresentation);
@@ -38,6 +42,7 @@ public class ReceiptPrinter {
 
         String line = formatLineWithWhitespace(name, totalPricePresentation);
 
+        // TODO 7. Extract method or maybe use string builder
         if (item.getQuantity() != 1) {
             line += "  " + presentPrice(item.getPrice()) + " * " + presentQuantity(item) + "\n";
         }
@@ -61,6 +66,7 @@ public class ReceiptPrinter {
         StringBuilder line = new StringBuilder();
         line.append(name);
         int whitespaceSize = this.columns - name.length() - value.length();
+        // TODO 7. Use String.repeat
         for (int i = 0; i < whitespaceSize; i++) {
             line.append(" ");
         }
@@ -74,6 +80,7 @@ public class ReceiptPrinter {
     }
 
     private static String presentQuantity(ReceiptItem item) {
+        // TODO. This is not seems correct. But I have no idea what to do
         return ProductUnit.EACH.equals(item.getProduct().getUnit())
                 ? String.format("%d", (int)item.getQuantity())
                 : String.format(Locale.UK, "%.3f", item.getQuantity());

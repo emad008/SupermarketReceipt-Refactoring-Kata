@@ -1,5 +1,7 @@
 package dojo.supermarket.model;
 
+
+// TODO 3. This is not a valid class with roots in reality or metaphor. At least the name does not mean anything
 public class ProductQuantity {
 
     private final Product product;

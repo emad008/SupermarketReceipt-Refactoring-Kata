@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ShoppingCart {
-
+    // TODO 2. Why we store same things in two different ways? (Redundancy)
     private final List<ProductQuantity> items = new ArrayList<>();
     private final Map<Product, Double> productQuantities = new HashMap<>();
 
@@ -15,6 +15,7 @@ public class ShoppingCart {
         return Collections.unmodifiableList(items);
     }
 
+    // TODO 6. Unused method
     void addItem(Product product) {
         addItemQuantity(product, 1.0);
     }
@@ -25,6 +26,7 @@ public class ShoppingCart {
 
     public void addItemQuantity(Product product, double quantity) {
         items.add(new ProductQuantity(product, quantity));
+        // TODO 7. Use get or default.
         if (productQuantities.containsKey(product)) {
             productQuantities.put(product, productQuantities.get(product) + quantity);
         } else {
@@ -32,13 +34,16 @@ public class ShoppingCart {
         }
     }
 
+    // TODO. Maybe there are more than one offer for a product. Why use map?
     void handleOffers(Receipt receipt, Map<Product, Offer> offers, SupermarketCatalog catalog) {
         for (Product p: productQuantities().keySet()) {
             double quantity = productQuantities.get(p);
+            // TODO 1. These should be handled through inheritance. (Replace Conditional with Polymorphism)
             if (offers.containsKey(p)) {
                 Offer offer = offers.get(p);
                 double unitPrice = catalog.getUnitPrice(p);
                 int quantityAsInt = (int) quantity;
+                // TODO 5. Make discount a method. (Replace temp with query)
                 Discount discount = null;
                 int x = 1;
                 if (offer.offerType == SpecialOfferType.THREE_FOR_TWO) {
@@ -67,6 +72,7 @@ public class ShoppingCart {
                     double discountTotal = unitPrice * quantity - (offer.argument * numberOfXs + quantityAsInt % 5 * unitPrice);
                     discount = new Discount(p, x + " for " + offer.argument, -discountTotal);
                 }
+                // TODO. I am not sure about this one but it can be a (Introduce Null Object)
                 if (discount != null)
                     receipt.addDiscount(discount);
             }

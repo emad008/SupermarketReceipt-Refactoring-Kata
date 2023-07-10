@@ -38,8 +38,5 @@ public class SupermarketTest {
         assertEquals(1.99, receiptItem.getPrice());
         assertEquals(2.5*1.99, receiptItem.getTotalPrice());
         assertEquals(2.5, receiptItem.getQuantity());
-
     }
-
-
 }

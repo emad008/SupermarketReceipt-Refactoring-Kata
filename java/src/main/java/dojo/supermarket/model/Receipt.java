@@ -11,6 +11,7 @@ public class Receipt {
 
     public double getTotalPrice() {
         double total = 0.0;
+        // TODO 4. Extract the two methods. (Extract Method)
         for (ReceiptItem item : items) {
             total += item.getTotalPrice();
         }
