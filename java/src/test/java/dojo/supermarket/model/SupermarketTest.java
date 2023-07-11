@@ -6,12 +6,11 @@ import dojo.supermarket.model.offer.BuyXTakeY;
 import dojo.supermarket.model.offer.PercentOffer;
 import org.junit.jupiter.api.Test;
 
-import java.io.Console;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SupermarketTest {
     // DONETodo: test all kinds of discounts are applied properly
+
     @Test
     public void testReceiptPrinter()  {
 
@@ -33,6 +32,7 @@ public class SupermarketTest {
 
         ShoppingCart cart = new ShoppingCart();
         cart.addItemQuantity(apples, 7.0);
+        cart.addItemQuantity(toothbrush, 3);
 
         // ACT
         Receipt receipt = teller.checksOutArticlesFrom(cart);
@@ -40,9 +40,11 @@ public class SupermarketTest {
         // ASSERT
         ReceiptPrinter printer = new ReceiptPrinter();
         assertEquals(
-            "apples                             13.93  1.99 * 7.000\n" +
-            "5.0 for 6.99(apples)               -2.96\n" +
-            "Total:                             10.97",
+            """
+                toothbrush                          2.97  0.99 * 3
+                apples                             13.93  1.99 * 7.000
+                5.0 for 6.99(apples)               -2.96
+                Total:                             13.94""",
             printer.printReceipt(receipt)
         );
     }

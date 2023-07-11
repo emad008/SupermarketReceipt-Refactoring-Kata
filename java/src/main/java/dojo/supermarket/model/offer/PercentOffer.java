@@ -14,7 +14,7 @@ public class PercentOffer extends Offer {
 
     @Override
     public Discount offerDiscountOnPurchase(Product product, double unitPrice, double quantity) {
-        // TODO. This if is repeated in all offer subclasses.
+        // IGNOREDTODO. This if is repeated in all offer subclasses.
         if (!product.equals(getProduct()))
             return new NullDiscount(product, this);
         return new Discount(

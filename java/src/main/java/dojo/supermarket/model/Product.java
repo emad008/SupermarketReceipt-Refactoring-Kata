@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Product {
     private final String name;
-    // TODO. This field is only for representation and does not carry any logic.
+    // IGNOREDTODO. This field is only for representation and does not carry any logic.
     private final ProductUnit unit;
 
     public Product(String name, ProductUnit unit) {

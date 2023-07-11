@@ -100,7 +100,7 @@ public class ReceiptPrinter {
     }
 
     private static String presentQuantity(ReceiptItem item) {
-        // TODO. This is not seems correct. But I have no idea what to do
+        // IGNOREDTODO. This is not seems correct. But I have no idea what to do
         return ProductUnit.EACH.equals(item.getProduct().getUnit())
                 ? String.format("%d", (int)item.getQuantity())
                 : String.format(Locale.UK, "%.3f", item.getQuantity());
