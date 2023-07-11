@@ -6,7 +6,6 @@ import dojo.supermarket.model.discount.NullDiscount;
 
 public class Offer {
     private final Product product;
-    double argument;
 
     public Offer(Product product) {
         this.product = product;
