@@ -6,19 +6,19 @@ import java.util.Objects;
 // an order as just one line in a receipt
 public class ReceiptItem {
     private final Product product;
-    // TODO 8. I agree more with the unitPrice and price notation used in SupermarketCatalog
-    private final double price;
+    // DONETODO 8. I agree more with the unitPrice and price notation used in SupermarketCatalog
+    private final double unitPrice;
     // DONETODO 2. This field can be represented is multiplication of quantity and price. (Redundancy)
     private final double quantity;
 
-    ReceiptItem(Product p, double quantity, double price) {
+    ReceiptItem(Product p, double quantity, double unitPrice) {
         this.product = p;
         this.quantity = quantity;
-        this.price = price;
+        this.unitPrice = unitPrice;
     }
 
-    public double getPrice() {
-        return price;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
     public Product getProduct() {
@@ -29,8 +29,8 @@ public class ReceiptItem {
         return quantity;
     }
 
-    public double getTotalPrice() {
-        return getPrice() * getQuantity();
+    public double getPrice() {
+        return getUnitPrice() * getQuantity();
     }
 
     @Override
@@ -38,13 +38,13 @@ public class ReceiptItem {
         if (this == o) return true;
         if (!(o instanceof ReceiptItem)) return false;
         ReceiptItem that = (ReceiptItem) o;
-        return Double.compare(that.price, price) == 0 &&
+        return Double.compare(that.unitPrice, unitPrice) == 0 &&
                 Double.compare(that.quantity, quantity) == 0 &&
                 Objects.equals(product, that.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(product, price, quantity);
+        return Objects.hash(product, unitPrice, quantity);
     }
 }

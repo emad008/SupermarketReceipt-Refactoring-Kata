@@ -9,17 +9,17 @@ public class Receipt {
     private final List<ReceiptItem> items = new ArrayList<>();
     private final List<Discount> discounts = new ArrayList<>();
 
-    private double getItemsTotalPrice() {
-        return items.stream().mapToDouble(ReceiptItem::getTotalPrice).sum();
+    private double getItemsPrice() {
+        return items.stream().mapToDouble(ReceiptItem::getPrice).sum();
     }
 
     private double getTotalDiscountAmount() {
         return discounts.stream().mapToDouble(Discount::getDiscountAmount).sum();
     }
 
-    public double getTotalPrice() {
+    public double getPrice() {
         // DONETODO 4. Extract the two methods. (Extract Method)
-        return getItemsTotalPrice() + getTotalDiscountAmount();
+        return getItemsPrice() + getTotalDiscountAmount();
     }
 
     public void addProduct(Product p, double quantity, double price) {

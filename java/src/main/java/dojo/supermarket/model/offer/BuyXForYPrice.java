@@ -21,8 +21,8 @@ public class BuyXForYPrice extends Offer {
         double priceForAllTakes = numberOfBases * priceForBaseQuantity;
         double remainingQuantity = quantity - numberOfBases * baseQuantity;
         double priceForRemainingQuantity = remainingQuantity * unitPrice;
-        double totalPrice = priceForAllTakes + priceForRemainingQuantity;
-        double discountAmount = unitPrice * quantity - totalPrice;
+        double price = priceForAllTakes + priceForRemainingQuantity;
+        double discountAmount = unitPrice * quantity - price;
         return new Discount(p, this, -discountAmount);
     }
 

@@ -19,7 +19,7 @@ public class ReceiptPrinter {
         this.columns = columns;
     }
 
-    // TODO 6. Unused method
+    // DONETODO 6. Unused method
     public String printReceipt(Receipt receipt) {
         StringBuilder result = new StringBuilder();
         // DONETODO 4. Extract method
@@ -46,16 +46,25 @@ public class ReceiptPrinter {
     }
 
     private String presentReceiptItem(ReceiptItem item) {
-        String totalPricePresentation = presentPrice(item.getTotalPrice());
-        String name = item.getProduct().getName();
+        StringBuilder result = new StringBuilder();
 
-        String line = formatLineWithWhitespace(name, totalPricePresentation);
+        result.append(
+            formatLineWithWhitespace(
+                item.getProduct().getName(),
+                presentPrice(item.getPrice())
+            )
+        );
 
-        // TODO 7. Extract method or maybe use string builder
+        // DONETODO 7. Extract method or maybe use string builder
         if (item.getQuantity() != 1) {
-            line += "  " + presentPrice(item.getPrice()) + " * " + presentQuantity(item) + "\n";
+            result
+                .append("  ")
+                .append(presentPrice(item.getUnitPrice()))
+                .append(" * ")
+                .append(presentQuantity(item))
+                .append("\n");
         }
-        return line;
+        return result.toString();
     }
 
     private String presentDiscount(Discount discount) {
@@ -67,7 +76,7 @@ public class ReceiptPrinter {
 
     private String presentTotal(Receipt receipt) {
         String name = "Total: ";
-        String value = presentPrice(receipt.getTotalPrice());
+        String value = presentPrice(receipt.getPrice());
         return formatLineWithWhitespace(name, value);
     }
 
@@ -75,12 +84,10 @@ public class ReceiptPrinter {
         StringBuilder line = new StringBuilder();
         line.append(name);
         int whitespaceSize = this.columns - name.length() - value.length();
-        // TODO 7. Use String.repeat
-        for (int i = 0; i < whitespaceSize; i++) {
-            line.append(" ");
-        }
+        // DONETODO 7. Use String.repeat
+        line.append(" ".repeat(Math.max(0, whitespaceSize)));
         line.append(value);
-        line.append('\n');
+//        line.append('\n');
         return line.toString();
     }
 

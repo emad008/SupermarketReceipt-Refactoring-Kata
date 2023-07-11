@@ -21,8 +21,8 @@ public class BuyXTakeY extends Offer {
         double priceForAllTakes = numberOfTakes * baseBuyQuantity * unitPrice;
         double remainingQuantity = quantity - numberOfTakes * takingQuantity;
         double priceForRemainingQuantity = remainingQuantity * unitPrice;
-        double totalPrice = priceForAllTakes + priceForRemainingQuantity;
-        double discountAmount = quantity * unitPrice - totalPrice;
+        double price = priceForAllTakes + priceForRemainingQuantity;
+        double discountAmount = quantity * unitPrice - price;
         return new Discount(p, this, -discountAmount);
     }
 
