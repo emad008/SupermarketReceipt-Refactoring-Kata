@@ -5,8 +5,6 @@ import dojo.supermarket.model.offer.BuyXTakeY;
 import dojo.supermarket.model.offer.PercentOffer;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SupermarketTest {
@@ -20,7 +18,7 @@ public class SupermarketTest {
         Product apples = new Product("apples", ProductUnit.KILO);
         catalog.addProduct(apples, 1.99);
 
-        Teller teller = new Teller(catalog);
+        CashRegister teller = new CashRegister(catalog);
         teller.addSpecialOffer(
             apples,
             new BuyXForYPrice(
@@ -55,7 +53,7 @@ public class SupermarketTest {
         Product apples = new Product("apples", ProductUnit.KILO);
         catalog.addProduct(apples, 1.99);
 
-        Teller teller = new Teller(catalog);
+        CashRegister teller = new CashRegister(catalog);
         teller.addSpecialOffer(
             toothbrush,
             new BuyXTakeY(
@@ -90,7 +88,7 @@ public class SupermarketTest {
         Product apples = new Product("apples", ProductUnit.KILO);
         catalog.addProduct(apples, 1.99);
 
-        Teller teller = new Teller(catalog);
+        CashRegister teller = new CashRegister(catalog);
         teller.addSpecialOffer(
             apples,
             new PercentOffer(

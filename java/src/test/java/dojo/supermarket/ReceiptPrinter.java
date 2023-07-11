@@ -4,7 +4,8 @@ import dojo.supermarket.model.*;
 
 import java.util.Locale;
 
-// TODO 3. Unusual class
+// MAYBEATODO 3. Unusual class. I think we can fit in this class in our metaphor. I can think it as a some real printer who
+// prints the receipt. Like a presentation layer.
 public class ReceiptPrinter {
 
     private final int columns;

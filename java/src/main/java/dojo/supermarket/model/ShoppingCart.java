@@ -12,13 +12,8 @@ public class ShoppingCart {
     // DONETODO 2. Why we store same things in two different ways? (Redundancy)
     private final Map<Product, Double> productQuantities = new HashMap<>();
 
-    List<ProductQuantity> getItems() {
-        return productQuantities.keySet().stream().map(
-            p -> new ProductQuantity(
-                p,
-                productQuantities.get(p)
-            )
-        ).toList();
+    Map<Product, Double> getItems() {
+        return Collections.unmodifiableMap(productQuantities);
     }
 
     // TODO 6. Unused method
