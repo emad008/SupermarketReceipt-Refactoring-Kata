@@ -1,6 +1,6 @@
 # Code smells and problems: (ordered by priority of resolving)
 
-## 1) Use inheritance for Offer class
+## 1) Use inheritance for Offer class:
 See handleOffers method of ShoppingCart class. We have used an if statement for each of 
 special offer types we have, and it's needless to say that if we continue with the same
 technique for future offer types we will end up with a huge method with tons of ifs.
