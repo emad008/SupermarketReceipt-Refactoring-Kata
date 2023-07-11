@@ -18,8 +18,13 @@ public class PercentOffer extends Offer {
             return null;
         return new Discount(
             p,
-            percentage + "% off",
+            this,
             -quantity * unitPrice * percentage / 100.0
         );
+    }
+
+    @Override
+    public String getDescription() {
+        return percentage + "% off";
     }
 }

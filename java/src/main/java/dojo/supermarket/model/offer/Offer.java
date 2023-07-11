@@ -2,7 +2,6 @@ package dojo.supermarket.model.offer;
 
 import dojo.supermarket.model.Discount;
 import dojo.supermarket.model.Product;
-import dojo.supermarket.model.SpecialOfferType;
 
 public class Offer {
     private final Product product;
@@ -18,5 +17,9 @@ public class Offer {
 
     public Discount offerDiscountOnPurchase(Product p, double unitPrice, double quantity) {
         return null;
+    }
+
+    public String getDescription() {
+        return "offer";
     }
 }

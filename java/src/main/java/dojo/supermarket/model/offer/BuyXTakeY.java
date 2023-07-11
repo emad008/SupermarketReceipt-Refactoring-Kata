@@ -23,6 +23,11 @@ public class BuyXTakeY extends Offer {
         double priceForRemainingQuantity = remainingQuantity * unitPrice;
         double totalPrice = priceForAllTakes + priceForRemainingQuantity;
         double discountAmount = quantity * unitPrice - totalPrice;
-        return new Discount(p, takingQuantity + " for " + baseBuyQuantity, -discountAmount);
+        return new Discount(p, this, -discountAmount);
+    }
+
+    @Override
+    public String getDescription() {
+        return takingQuantity + " for " + baseBuyQuantity;
     }
 }
