@@ -9,12 +9,16 @@ import java.util.List;
 import java.util.Map;
 
 public class ShoppingCart {
-    // TODO 2. Why we store same things in two different ways? (Redundancy)
-    private final List<ProductQuantity> items = new ArrayList<>();
+    // DONETODO 2. Why we store same things in two different ways? (Redundancy)
     private final Map<Product, Double> productQuantities = new HashMap<>();
 
     List<ProductQuantity> getItems() {
-        return Collections.unmodifiableList(items);
+        return productQuantities.keySet().stream().map(
+            p -> new ProductQuantity(
+                p,
+                productQuantities.get(p)
+            )
+        ).toList();
     }
 
     // TODO 6. Unused method
@@ -27,7 +31,6 @@ public class ShoppingCart {
     }
 
     public void addItemQuantity(Product product, double quantity) {
-        items.add(new ProductQuantity(product, quantity));
         // TODO 7. Use get or default.
         if (productQuantities.containsKey(product)) {
             productQuantities.put(product, productQuantities.get(product) + quantity);
@@ -40,6 +43,7 @@ public class ShoppingCart {
     void handleOffers(Receipt receipt, Map<Product, Offer> offers, SupermarketCatalog catalog) {
         for (Product p: productQuantities().keySet()) {
             double quantity = productQuantities.get(p);
+            // DONETODO 1. These should be handled through inheritance. (Replace Conditional with Polymorphism)
             if (offers.containsKey(p)) {
                 Offer offer = offers.get(p);
                 // TODO 5. Make discount a method. (Replace temp with query)

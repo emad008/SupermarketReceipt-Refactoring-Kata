@@ -10,7 +10,6 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SupermarketTest {
-
     // Todo: test all kinds of discounts are applied properly
 
     @Test

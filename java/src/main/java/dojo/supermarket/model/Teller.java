@@ -31,8 +31,7 @@ public class Teller {
             // TODO 5. unnecessary local variables. (Replace temp with query)
             double quantity = pq.getQuantity();
             double unitPrice = catalog.getUnitPrice(p);
-            double price = quantity * unitPrice;
-            receipt.addProduct(p, quantity, unitPrice, price);
+            receipt.addProduct(p, quantity, unitPrice);
         }
         theCart.handleOffers(receipt, offers, catalog);
 
