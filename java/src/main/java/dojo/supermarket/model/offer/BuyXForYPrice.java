@@ -1,7 +1,8 @@
 package dojo.supermarket.model.offer;
 
-import dojo.supermarket.model.Discount;
+import dojo.supermarket.model.discount.Discount;
 import dojo.supermarket.model.Product;
+import dojo.supermarket.model.discount.NullDiscount;
 
 public class BuyXForYPrice extends Offer {
     private final double baseQuantity;
@@ -13,9 +14,9 @@ public class BuyXForYPrice extends Offer {
     }
 
     @Override
-    public Discount offerDiscountOnPurchase(Product p, double unitPrice, double quantity) {
-        if (!p.equals(getProduct()))
-            return null;
+    public Discount offerDiscountOnPurchase(Product product, double unitPrice, double quantity) {
+        if (!product.equals(getProduct()))
+            return new NullDiscount(product, this);
 
         double numberOfBases = Math.floor(quantity / baseQuantity);
         double priceForAllTakes = numberOfBases * priceForBaseQuantity;
@@ -23,7 +24,7 @@ public class BuyXForYPrice extends Offer {
         double priceForRemainingQuantity = remainingQuantity * unitPrice;
         double price = priceForAllTakes + priceForRemainingQuantity;
         double discountAmount = unitPrice * quantity - price;
-        return new Discount(p, this, -discountAmount);
+        return new Discount(product, this, -discountAmount);
     }
 
     @Override

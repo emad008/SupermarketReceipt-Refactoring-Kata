@@ -1,6 +1,8 @@
 package dojo.supermarket;
 
 import dojo.supermarket.model.*;
+import dojo.supermarket.model.discount.Discount;
+import dojo.supermarket.model.discount.NullDiscount;
 
 import java.util.List;
 import java.util.Locale;
@@ -68,6 +70,8 @@ public class ReceiptPrinter {
     }
 
     private String presentDiscount(Discount discount) {
+        if (discount instanceof NullDiscount)
+            return "";
         String name = discount.getDescription() + "(" + discount.getProduct().getName() + ")";
         String value = presentPrice(discount.getDiscountAmount());
 

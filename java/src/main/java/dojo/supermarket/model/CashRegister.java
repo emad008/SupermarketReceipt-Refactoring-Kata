@@ -1,5 +1,6 @@
 package dojo.supermarket.model;
 
+import dojo.supermarket.model.discount.Discount;
 import dojo.supermarket.model.offer.Offer;
 
 import java.util.HashMap;
@@ -8,8 +9,8 @@ import java.util.Map;
 // DONETODO 3. Refactor the name, what does teller suppose to mean?
 public class CashRegister {
     private final SupermarketCatalog catalog;
-    // TODO. There can be an offer catalog.
-    // TODO. Maybe there are more than one offer for a product. Why use map?
+    // IGNOREDTODO. There can be an offer catalog.
+    // IGNOREDTODO. Maybe there are more than one offer for a product. Why use map?
     private final Map<Product, Offer> offers = new HashMap<>();
 
     public CashRegister(SupermarketCatalog catalog) {
@@ -39,9 +40,8 @@ public class CashRegister {
                 theCart.getQuantity(product)
             );
 
-            // TODO. I am not sure about this one but it can be a (Introduce Null Object)
-            if (discount != null)
-                receipt.addDiscount(discount);
+            // DONETODO. I am not sure about this one but it can be a (Introduce Null Object)
+            receipt.addDiscount(discount);
         }
     }
 

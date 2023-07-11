@@ -38,6 +38,3 @@ it more, because it had been tested a lot more.
 
 ## 8) Consistent naming:
 When there are multiple names or labels for one meaning there will be confusion.
-
-## 6) Pass the logic to the class:
-There are several place that we use 

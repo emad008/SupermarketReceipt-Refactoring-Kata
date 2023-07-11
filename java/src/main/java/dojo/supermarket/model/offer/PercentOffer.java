@@ -1,7 +1,8 @@
 package dojo.supermarket.model.offer;
 
-import dojo.supermarket.model.Discount;
+import dojo.supermarket.model.discount.Discount;
 import dojo.supermarket.model.Product;
+import dojo.supermarket.model.discount.NullDiscount;
 
 public class PercentOffer extends Offer {
     private final int percentage;
@@ -12,12 +13,12 @@ public class PercentOffer extends Offer {
     }
 
     @Override
-    public Discount offerDiscountOnPurchase(Product p, double unitPrice, double quantity) {
+    public Discount offerDiscountOnPurchase(Product product, double unitPrice, double quantity) {
         // TODO. This if is repeated in all offer subclasses.
-        if (!p.equals(getProduct()))
-            return null;
+        if (!product.equals(getProduct()))
+            return new NullDiscount(product, this);
         return new Discount(
-            p,
+            product,
             this,
             -quantity * unitPrice * percentage / 100.0
         );

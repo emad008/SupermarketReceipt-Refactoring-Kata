@@ -2,7 +2,7 @@ package dojo.supermarket.model;
 
 import java.util.Objects;
 
-// TODO. This is actually an order. It can have more complex logic with new features but for now, we can just think
+// IGNOREDTODO. This is actually an order. It can have more complex logic with new features but for now, we can just think
 // an order as just one line in a receipt
 public class ReceiptItem {
     private final Product product;
