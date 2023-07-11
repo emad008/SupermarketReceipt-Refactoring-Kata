@@ -2,6 +2,7 @@ package dojo.supermarket;
 
 import dojo.supermarket.model.*;
 
+import java.util.List;
 import java.util.Locale;
 
 // MAYBEATODO 3. Unusual class. I think we can fit in this class in our metaphor. I can think it as a some real printer who
@@ -21,19 +22,26 @@ public class ReceiptPrinter {
     // TODO 6. Unused method
     public String printReceipt(Receipt receipt) {
         StringBuilder result = new StringBuilder();
-        // TODO 4. Extract method
-        for (ReceiptItem item : receipt.getItems()) {
-            String receiptItem = presentReceiptItem(item);
-            result.append(receiptItem);
-        }
-        // TODO 4. Extract method
-        for (Discount discount : receipt.getDiscounts()) {
-            String discountPresentation = presentDiscount(discount);
-            result.append(discountPresentation);
-        }
-
+        // DONETODO 4. Extract method
+        result.append(presentReceiptItems(receipt.getItems()));
+        // DONETODO 4. Extract method
+        result.append(presentDiscounts(receipt.getDiscounts()));
         result.append("\n");
         result.append(presentTotal(receipt));
+        return result.toString();
+    }
+
+    private String presentReceiptItems(List<ReceiptItem> receiptItems) {
+        StringBuilder result = new StringBuilder();
+        for (ReceiptItem item : receiptItems)
+            result.append(presentReceiptItem(item));
+        return result.toString();
+    }
+
+    private String presentDiscounts(List<Discount> discounts) {
+        StringBuilder result = new StringBuilder();
+        for (Discount discount : discounts)
+            result.append(presentDiscount(discount));
         return result.toString();
     }
 

@@ -19,17 +19,24 @@ public class CashRegister {
         offers.put(product, offer);
     }
 
-    public Receipt checksOutArticlesFrom(ShoppingCart theCart) {
-        Receipt receipt = new Receipt();
-        // TODO 5. unnecessary local variable. (Replace temp with query)
-        Map<Product, Double> productQuantities = theCart.getItems();
-        // TODO 4. extract below part as another method (Extract Method)
+    public void addProductsToReceipt(Receipt receipt, Map<Product, Double> productQuantities) {
         for (Product p: productQuantities.keySet()) {
             // TODO 5. unnecessary local variables. (Replace temp with query)
             double quantity = productQuantities.get(p);
             double unitPrice = catalog.getUnitPrice(p);
             receipt.addProduct(p, quantity, unitPrice);
         }
+    }
+
+    public Receipt checksOutArticlesFrom(ShoppingCart theCart) {
+        Receipt receipt = new Receipt();
+        // TODO 5. unnecessary local variable. (Replace temp with query)
+        Map<Product, Double> productQuantities = theCart.getItems();
+        // DONETODO 4. extract below part as another method (Extract Method)
+        addProductsToReceipt(
+            receipt,
+            productQuantities
+        );
         theCart.handleOffers(receipt, offers, catalog);
 
         return receipt;
